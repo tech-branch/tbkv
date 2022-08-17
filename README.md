@@ -1,5 +1,5 @@
-![tests](https://github.com/tech-branch/glassnode/actions/workflows/main.yml/badge.svg)
-![continuous semgrep](https://github.com/tech-branch/glassnode/actions/workflows/semgrep.yml/badge.svg)
+![tests](https://github.com/tech-branch/tbkv/actions/workflows/main.yml/badge.svg)
+![continuous semgrep](https://github.com/tech-branch/tbkv/actions/workflows/semgrep.yml/badge.svg)
 
 ## TBKV key-val store
 

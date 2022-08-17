@@ -1,4 +1,4 @@
-name: Semgrep
+name: semgrep
 
 on:
   # Scan changed files in PRs, block on new issues only (existing issues ignored)
