@@ -36,6 +36,9 @@ coverage: out/report.json ## Displays coverage per func on cli
 html-coverage: out/report.json ## Displays the coverage results in the browser
 	go tool cover -html=out/cover.out
 
+benchmark: ## Runs all benchmarks
+	go test -bench=. -count 5 | tee out/new-bench.txt
+
 test-reports: out/report.json
 
 .PHONY: out/report.json

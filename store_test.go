@@ -70,3 +70,21 @@ func TestKVStore_Delete(t *testing.T) {
 	}
 
 }
+
+// pkg: github.com/tech-branch/tbkv@v1.0.0
+// cpu: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+// BenchmarkMultipleSetGets-8   	  649632	      1666 ns/op	     232 B/op	       3 allocs/op
+func BenchmarkMultipleSetGets(b *testing.B) {
+	kvs := NewDefaultStore()
+	const (
+		key = "key"
+		val = "value"
+	)
+	for i := 0; i < b.N; i++ {
+		kvs.Set(key, val)
+		_, err := kvs.Get(key)
+		if err != nil {
+			b.Error(err)
+		}
+	}
+}
