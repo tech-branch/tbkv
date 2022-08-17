@@ -65,25 +65,3 @@ func NewStore(requestBufferSize uint8) KVStore {
 func NewDefaultStore() KVStore {
 	return NewStore(0)
 }
-
-func (s *KVStore) loop() error {
-	for {
-		select {
-		case setRequest := <-s.save:
-			s.data[setRequest.Item.Key] = setRequest.Item.Value
-			setRequest.Ok <- true // cannot fail
-		case getRequest := <-s.fetch:
-			val, ok := s.data[getRequest.Key]
-			getRequest.Result <- Result{
-				Value: val,
-				Ok:    ok,
-			}
-		case delRequest := <-s.delete:
-			delete(s.data, delRequest.Key)
-			delRequest.Result <- Result{
-				Value: delRequest.Key,
-				Ok:    true, // cannot fail
-			}
-		}
-	}
-}
